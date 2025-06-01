@@ -7,8 +7,6 @@ const NewsLetter = () => {
   return (
     <section className="py-20">
       <Card className="border-0 shadow-2xl bg-gradient-to-br from-blue-50 via-white to-slate-50 overflow-hidden">
-        <div className="absolute top-0 right-0 w-64 h-64 bg-gradient-to-br from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
-        <div className="absolute bottom-0 left-0 w-64 h-64 bg-gradient-to-tr from-blue-200/30 to-transparent rounded-full blur-3xl"></div>
 
         <CardHeader className="text-center pb-4 relative">
           <div className="mb-4">
