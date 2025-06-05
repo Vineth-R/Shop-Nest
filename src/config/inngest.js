@@ -1,3 +1,5 @@
+"use server";
+
 import { Inngest } from "inngest";
 import dbConnect from "./db";
 import User from "../models/User";

@@ -1,3 +1,5 @@
+"use server"
+
 import mongoose from "mongoose";
 import {unique} from "next/dist/build/utils";
 
