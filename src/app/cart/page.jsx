@@ -10,7 +10,7 @@ import { Badge } from "@/components/ui/badge"
 import { ShoppingCart, ArrowLeft, Plus, Minus, Trash2 } from "lucide-react"
 
 const Cart = () => {
-  const { products, router, cartItems, addToCart, updateCartQuantity, getCartCount } = useAppContext()
+  const { products, router, cartItem, addToCart, updateCartQuantity, getCartCount } = useAppContext()
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-slate-50 to-blue-50">
@@ -39,7 +39,7 @@ const Cart = () => {
           <div className="flex-1">
             <Card className="border-0 shadow-lg bg-white/80 backdrop-blur-sm">
               <CardContent className="p-0">
-                {Object.keys(cartItems).length > 0 ? (
+                {Object.keys(cartItem || {}).length > 0 ? (
                   <div className="overflow-x-auto">
                     <table className="w-full">
                       <thead className="bg-gray-50 border-b">
@@ -55,10 +55,10 @@ const Cart = () => {
                         </tr>
                       </thead>
                       <tbody className="divide-y divide-gray-100">
-                        {Object.keys(cartItems).map((itemId) => {
+                        {Object.keys(cartItem || {}).map((itemId) => {
                           const product = products.find((product) => product._id === itemId)
 
-                          if (!product || cartItems[itemId] <= 0) return null
+                          if (!product || cartItem[itemId] <= 0) return null
 
                           return (
                             <tr key={itemId} className="hover:bg-gray-50/50 transition-colors">
@@ -97,11 +97,11 @@ const Cart = () => {
                                     variant="outline"
                                     size="icon"
                                     className="h-8 w-8 rounded-full"
-                                    onClick={() => updateCartQuantity(product._id, cartItems[itemId] - 1)}
+                                    onClick={() => updateCartQuantity(product._id, cartItem[itemId] - 1)}
                                   >
                                     <Minus className="h-4 w-4" />
                                   </Button>
-                                  <span className="w-12 text-center font-semibold">{cartItems[itemId]}</span>
+                                  <span className="w-12 text-center font-semibold">{[itemId]}</span>
                                   <Button
                                     variant="outline"
                                     size="icon"
@@ -114,7 +114,7 @@ const Cart = () => {
                               </td>
                               <td className="py-6 px-6 text-right hidden md:table-cell">
                                 <span className="font-bold text-gray-900">
-                                  ${(product.offerPrice * cartItems[itemId]).toFixed(2)}
+                                  ${(product.offerPrice * cartItem[itemId]).toFixed(2)}
                                 </span>
                               </td>
                             </tr>
@@ -141,7 +141,7 @@ const Cart = () => {
               </CardContent>
             </Card>
 
-            {Object.keys(cartItems).length > 0 && (
+            {Object.keys(cartItem || {}).length > 0 && (
               <div className="mt-6">
                 <Button
                   variant="outline"
@@ -156,7 +156,7 @@ const Cart = () => {
           </div>
 
           {/* Order Summary */}
-          {Object.keys(cartItems).length > 0 && <OrderSummary />}
+          {Object.keys(cartItem || {}).length > 0 && <OrderSummary />}
         </div>
       </div>
       <Footer />

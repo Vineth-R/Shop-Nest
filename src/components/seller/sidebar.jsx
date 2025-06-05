@@ -1,45 +1,82 @@
-import React from 'react';
-import Link from 'next/link';
-import { assets } from '../../assets/assets';
-import Image from 'next/image';
-import { usePathname } from 'next/navigation';
+"use client"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
+import { Card } from "@/components/ui/card"
+import { Badge } from "@/components/ui/badge"
+import { Plus, Package, ShoppingCart, BarChart3 } from "lucide-react"
 
 const SideBar = () => {
-    const pathname = usePathname()
-    const menuItems = [
-        { name: 'Add Product', path: '/seller', icon: assets.add_icon },
-        { name: 'Product List', path: '/seller/product-list', icon: assets.product_list_icon },
-        { name: 'Orders', path: '/seller/orders', icon: assets.order_icon },
-    ];
+  const pathname = usePathname()
 
-    return (
-        <div className='md:w-64 w-16 border-r min-h-screen text-base border-gray-300 py-2 flex flex-col'>
-            {menuItems.map((item) => {
+  const menuItems = [
+    {
+      name: "Add Product",
+      path: "/seller",
+      icon: Plus,
+      description: "Create new product",
+    },
+    {
+      name: "Product List",
+      path: "/seller/product-list",
+      icon: Package,
+      description: "Manage inventory",
+    },
+    {
+      name: "Orders",
+      path: "/seller/orders",
+      icon: ShoppingCart,
+      description: "Track orders",
+      badge: "3",
+    },
+  ]
 
-                const isActive = pathname === item.path;
+  return (
+    <div className="w-16 md:w-72 min-h-screen bg-gradient-to-b from-gray-50 to-white border-r border-gray-200 p-2 md:p-4">
+      <div className="space-y-2">
+        {menuItems.map((item) => {
+          const isActive = pathname === item.path
+          const Icon = item.icon
 
-                return (
-                    <Link href={item.path} key={item.name} passHref>
-                        <div
-                            className={
-                                `flex items-center py-3 px-4 gap-3 ${isActive
-                                    ? "border-r-4 md:border-r-[6px] bg-orange-600/10 border-orange-500/90"
-                                    : "hover:bg-gray-100/90 border-white"
-                                }`
-                            }
-                        >
-                            <Image
-                                src={item.icon}
-                                alt={`${item.name.toLowerCase()}_icon`}
-                                className="w-7 h-7"
-                            />
-                            <p className='md:block hidden text-center'>{item.name}</p>
-                        </div>
-                    </Link>
-                );
-            })}
-        </div>
-    );
-};
+          return (
+            <Link href={item.path} key={item.name}>
+              <Card
+                className={`p-3 md:p-4 cursor-pointer transition-all duration-200 hover:shadow-md border-0 ${
+                  isActive
+                    ? "bg-gradient-to-r from-blue-600 to-blue-700 text-white shadow-lg"
+                    : "bg-white/80 backdrop-blur-sm hover:bg-blue-50 text-gray-700"
+                }`}
+              >
+                <div className="flex items-center gap-3">
+                  <div
+                    className={`flex items-center justify-center w-10 h-10 rounded-lg ${
+                      isActive ? "bg-white/20" : "bg-blue-100"
+                    }`}
+                  >
+                    <Icon className={`h-5 w-5 ${isActive ? "text-white" : "text-blue-600"}`} />
+                  </div>
+                  <div className="hidden md:block flex-1 min-w-0">
+                    <div className="flex items-center justify-between">
+                      <div>
+                        <h3 className={`font-semibold ${isActive ? "text-white" : "text-gray-900"}`}>{item.name}</h3>
+                        <p className={`text-sm ${isActive ? "text-blue-100" : "text-gray-600"}`}>{item.description}</p>
+                      </div>
+                      {item.badge && (
+                        <Badge className={`${isActive ? "bg-white/20 text-white" : "bg-red-100 text-red-700"} text-xs`}>
+                          {item.badge}
+                        </Badge>
+                      )}
+                    </div>
+                  </div>
+                </div>
+              </Card>
+            </Link>
+          )
+        })}
+      </div>
 
-export default SideBar;
+    
+    </div>
+  )
+}
+
+export default SideBar

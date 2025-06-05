@@ -16,7 +16,7 @@ const ProductCard = ({ product }) => {
         <div className="absolute top-2 left-2 z-10 flex flex-col gap-2">
           {product.isNew && <Badge className="bg-gradient-to-r from-green-500 to-green-600 text-white">New</Badge>}
           {product.isTrending && (
-            <Badge className="bg-gradient-to-r from-orange-500 to-orange-600 text-white">
+            <Badge className="bg-gradient-to-r from-blue-500 to-blue-600 text-white">
               <TrendingUp className="w-3 h-3 mr-1" />
               Hot
             </Badge>
