@@ -1,19 +1,18 @@
-"use server";
+
 
 import { Inngest } from "inngest";
 import dbConnect from "./db";
 import User from "../models/User";
-
 // Create a client to send and receive events
 export const inngest = new Inngest({ id: "shopnest-next" });
 
 // Inngest function to ave user data to database
 export const syncUserCreation = inngest.createFunction(
     {
-        id: "sync-user-from-clerk",
+        id: 'sync-user-from-clerk',
     },
     {
-        event: "clerk.user.created",
+        event: 'clerk/user.created',
     },
     async ({ event}) => {
         const {
@@ -21,13 +20,13 @@ export const syncUserCreation = inngest.createFunction(
             first_name,
             last_name,
             email_addresses,
-            image_Url
-        } = event.data;
+            image_url
+        } = event.data
         const userData={
             id: id,
             email: email_addresses[0].email_address,
-            name: first_name + " " + last_name,
-            imageUrl: image_Url
+            name: first_name + ' ' + last_name,
+            imageUrl: image_url
         }
         await dbConnect();
         await User.create(userData)
@@ -37,10 +36,10 @@ export const syncUserCreation = inngest.createFunction(
 // Inngest function to update user data in database
 export const syncUserUpdate = inngest.createFunction(
     {
-        id: "update-user-from-clerk",
+        id: 'update-user-from-clerk',
     },
     {
-        event: "clerk.user.updated",
+        event: 'clerk/user.updated',
     },
     async ({ event }) => {
         const {
@@ -48,30 +47,30 @@ export const syncUserUpdate = inngest.createFunction(
             first_name,
             last_name,
             email_addresses,
-            image_Url
+            image_url
         } = event.data;
         const userData = {
             id: id,
             email: email_addresses[0].email_address,
             name: first_name + " " + last_name,
-            imageUrl: image_Url
+            imageUrl: image_url
         }
         await dbConnect();
-        await User.findOneAndUpdate({id: id}, userData, {new: true})
+        await User.findByIdAndUpdate(id,userData)
     }
 );
 
 // Inngest function to delete user data from database
 export const syncUserDeletion = inngest.createFunction(
     {
-        id: "delete-user-from-clerk",
+        id: 'delete-user-with-clerk',
     },
     {
-        event: "clerk.user.deleted",
+        event: 'clerk/user.deleted',
     },
     async ({ event }) => {
-        const { id } = event.data;
+        const { id } = event.data
         await dbConnect();
-        await User.findOneAndDelete({id: id});
+        await User.findByIdAndDelete(id);
     }
 );
