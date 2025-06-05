@@ -7,7 +7,7 @@ import ClerkProviderWrapper from "../components/ClerkProviderWrapper";
 const outfit = Outfit({ subsets: ["latin"], weight: ["300", "400", "500"] });
 
 export const metadata = {
-  title: "QuickCart - GreatStack",
+  title: "Shop Nest",
   description: "E-Commerce with Next.js",
 };
 
