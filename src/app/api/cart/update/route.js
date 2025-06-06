@@ -12,7 +12,7 @@ export async function POST(request) {
 
         await dbConnect()
 
-        const user = await User.findOne({ id: userId });
+        const user = await User.findOne({ _id: userId });
         user.cartItem = cartData;
         await user.save();
 

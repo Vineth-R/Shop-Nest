@@ -55,7 +55,7 @@ export const AppContextProvider = (props) => {
 
         if(data.success){
             setUserData(data.user)
-            setCartItem(data.user.cart)
+            setCartItem(data.user.cartItem)
         }else{
             toast.error(data.message);
         }

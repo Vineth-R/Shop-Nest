@@ -101,7 +101,7 @@ const Cart = () => {
                                   >
                                     <Minus className="h-4 w-4" />
                                   </Button>
-                                  <span className="w-12 text-center font-semibold">{[itemId]}</span>
+                                  <span className="w-12 text-center font-semibold">{cartItem[itemId]}</span>
                                   <Button
                                     variant="outline"
                                     size="icon"
