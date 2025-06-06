@@ -3,7 +3,11 @@ import mongoose from "mongoose";
 const OrderSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   amount: { type: Number, required: true },
-  address: { type: String, required: true },
+  address: { 
+    type: mongoose.Schema.Types.ObjectId, 
+    ref: "address", 
+    required: true 
+  },
   item: [  // Changed back to "item" to match existing data
     {
       productId: { 
