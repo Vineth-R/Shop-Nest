@@ -12,6 +12,7 @@ import { ShoppingBag, CreditCard, Truck, Shield, MapPin, Plus, Tag } from "lucid
 import { useEffect, useState } from "react"
 import { get } from "mongoose"
 import toast from "react-hot-toast"
+import axios from "axios"
 
 const OrderSummary = () => {
   const { currency, router, getCartCount, getCartAmount, getToken, user, cartItem, setCartItem } = useAppContext()
@@ -49,12 +50,42 @@ const OrderSummary = () => {
   }
 
   const createOrder = async () => {
-    if (!selectedAddress) {
-      alert("Please select a delivery address")
-      return
+    try{
+      if(!selectedAddress) {
+        toast.error("Please select a delivery address.")
+        return
+      }
+
+      let cartItemArray = Object.keys(cartItem).map((key) => ({ productId: key, quantity: cartItem[key] }));
+
+      cartItemArray = cartItemArray.filter(item => item.quantity > 0)
+
+      if(cartItemArray.length === 0) {
+        return toast.error("Your cart is empty.")
+      }
+
+      const token = await getToken()
+
+      const {data} = await axios.post('/api/order/create', {
+        address: selectedAddress._id, 
+        items: cartItemArray},{
+        headers: {
+          Authorization: `Bearer ${token}`
+        }
+        } )
+
+        if(data.success) {
+          toast.success(data.message)
+          setCartItem({})
+          router.push('/order-placed')
+        }
+        else {
+          toast.error(data.message)
+        }
+
+    }catch (error) {
+        toast.error(error.message)
     }
-    // Handle order creation
-    router.push("/order-placed")
   }
 
   const applyPromoCode = () => {
