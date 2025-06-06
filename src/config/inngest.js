@@ -61,12 +61,12 @@ export const createUserOrder = inngest.createFunction(
       console.log("Mapped orderItems:", mappedOrderItems);
       
       return {
-        userId: event.data.userId,
-        amount: event.data.amount,
-        address: event.data.address,
-        items: mappedOrderItems,  // mapping to "items" to match the schema
-        date: event.data.date,
-      };
+  userId: event.data.userId,
+  amount: event.data.amount,
+  address: event.data.address,
+  item: mappedOrderItems,  // Changed from "items" to "item"
+  date: event.data.date,
+};
     });
     
     console.log("Orders to insert:", orders);

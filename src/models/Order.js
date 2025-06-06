@@ -4,7 +4,7 @@ const OrderSchema = new mongoose.Schema({
   userId: { type: String, required: true },
   amount: { type: Number, required: true },
   address: { type: String, required: true },
-  items: [  // renamed from "item" to "items"
+  item: [  // Changed back to "item" to match existing data
     {
       productId: { 
         type: mongoose.Schema.Types.ObjectId,
@@ -14,6 +14,11 @@ const OrderSchema = new mongoose.Schema({
       quantity: { type: Number, required: true }
     }
   ],
+  status: {
+    type: String,
+    required: true,
+    default: 'Order Placed',
+  },
   date: { type: Date, default: Date.now }
 });
 
