@@ -14,7 +14,6 @@ import {
 } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import { Separator } from "@/components/ui/separator"
-import { Input } from "@/components/ui/input"
 import { Card, CardContent } from "@/components/ui/card"
 
 const Footer = () => {
@@ -159,18 +158,7 @@ const Footer = () => {
               </div>
             </div>
 
-            <div>
-              <h4 className="font-semibold mb-3">Stay Updated</h4>
-              <div className="flex gap-2">
-                <Input
-                  placeholder="Your email"
-                  className="bg-white/10 border-white/20 text-white placeholder:text-slate-400 focus:border-blue-400"
-                />
-                <Button className="bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 shrink-0">
-                  <Send className="h-4 w-4" />
-                </Button>
-              </div>
-            </div>
+            
           </div>
         </div>
 

@@ -1,6 +1,5 @@
 'use client'
 import React, { useEffect, useState } from "react";
-import { assets, productsDummyData } from "@/assets/assets";
 import Image from "next/image";
 import { useAppContext } from "@/context/AppContext";
 import Footer from "@/components/seller/footer";

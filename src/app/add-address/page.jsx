@@ -1,6 +1,6 @@
 "use client"
 
-import { assets } from "@/assets/assets"
+
 import Navbar from "@/components/Navbar"
 import Footer from "@/components/Footer"
 import Image from "next/image"
@@ -142,17 +142,6 @@ const AddAddress = () => {
               </form>
             </CardContent>
           </Card>
-
-          {/* <div className="hidden lg:flex items-center justify-center">
-            <div className="relative h-[400px] w-full max-w-md">
-              <Image
-                src={assets.my_location_image || "/placeholder.svg"}
-                alt="Location illustration"
-                fill
-                className="object-contain"
-              />
-            </div>
-          </div> */}
         </div>
       </div>
       <Footer />

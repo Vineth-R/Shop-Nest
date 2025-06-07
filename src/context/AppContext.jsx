@@ -1,8 +1,6 @@
 'use client'
-import { productsDummyData, userDummyData } from "@/assets/assets";
 import { useAuth, useUser } from "@clerk/nextjs";
 import axios from "axios";
-import { get, set } from "mongoose";
 import { useRouter } from "next/navigation";
 import { createContext, useContext, useEffect, useState } from "react";
 import toast from "react-hot-toast";
@@ -24,7 +22,7 @@ export const AppContextProvider = (props) => {
 
     const [products, setProducts] = useState([])
     const [userData, setUserData] = useState(false)
-    const [isSeller, setIsSeller] = useState(false)
+    const [isSeller, setIsSeller] = useState(true)
     const [cartItem, setCartItem] = useState({})
 
     const fetchProductData = async () => {

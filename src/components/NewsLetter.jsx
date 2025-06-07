@@ -15,7 +15,6 @@ const NewsLetter = () => {
               Newsletter Subscription
             </span>
           </div>
-          <CardTitle className="text-3xl md:text-4xl font-bold text-gray-900 mb-4">Subscribe & Get 20% Off</CardTitle>
           <CardDescription className="text-lg md:text-xl max-w-2xl mx-auto text-gray-600 leading-relaxed">
             Join our newsletter and receive exclusive offers, early access to new products, and personalized
             recommendations delivered straight to your inbox.
@@ -23,22 +22,7 @@ const NewsLetter = () => {
         </CardHeader>
 
         <CardContent className="pt-8 relative">
-          <div className="max-w-md mx-auto mb-12">
-            <div className="flex flex-col sm:flex-row gap-4">
-              <div className="relative flex-grow">
-                <Mail className="absolute left-4 top-1/2 -translate-y-1/2 h-5 w-5 text-gray-400" />
-                <Input
-                  type="email"
-                  placeholder="Enter your email address"
-                  className="pl-12 h-14 border-2 border-gray-200 focus:border-blue-500 rounded-xl text-lg"
-                />
-              </div>
-              <Button className="h-14 px-8 bg-gradient-to-r from-blue-600 to-blue-700 hover:from-blue-700 hover:to-blue-800 text-white font-semibold rounded-xl shadow-lg">
-                <Send className="mr-2 h-5 w-5" />
-                Subscribe Now
-              </Button>
-            </div>
-          </div>
+        
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="flex flex-col items-center text-center p-6 rounded-2xl bg-white/50 backdrop-blur-sm border border-white/20">
