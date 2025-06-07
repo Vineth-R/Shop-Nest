@@ -89,14 +89,14 @@ const Navbar = () => {
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
               </Link>
               <Link
-                href="/"
+                href="/about"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
               >
                 About Us
                 <span className="absolute -bottom-1 left-0 w-0 h-0.5 bg-blue-600 transition-all group-hover:w-full"></span>
               </Link>
               <Link
-                href="/"
+                href="/contact"
                 className="text-gray-700 hover:text-blue-600 font-medium transition-colors duration-200 relative group"
               >
                 Contact
@@ -240,4 +240,3 @@ const Navbar = () => {
 }
 
 export default Navbar
-

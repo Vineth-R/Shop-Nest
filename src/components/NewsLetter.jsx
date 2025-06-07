@@ -1,6 +1,4 @@
 import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/components/ui/card"
-import { Input } from "@/components/ui/input"
-import { Button } from "@/components/ui/button"
 import { Mail, Gift, Bell, ShieldCheck, Send } from "lucide-react"
 
 const NewsLetter = () => {
@@ -12,7 +10,7 @@ const NewsLetter = () => {
           <div className="mb-4">
             <span className="inline-flex items-center px-4 py-2 rounded-full text-sm font-medium bg-gradient-to-r from-blue-600 to-blue-700 text-white">
               <Mail className="w-4 h-4 mr-2" />
-              Newsletter Subscription
+              Newsletter
             </span>
           </div>
           <CardDescription className="text-lg md:text-xl max-w-2xl mx-auto text-gray-600 leading-relaxed">

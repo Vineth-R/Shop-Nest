@@ -1,6 +1,7 @@
 import React from "react";
 import ProductCard from "./ProductCard";
 import { useAppContext } from "@/context/AppContext";
+import { Button } from "./ui/button";
 
 const HomeProducts = () => {
   const { products, router } = useAppContext();
@@ -13,12 +14,12 @@ const HomeProducts = () => {
           <ProductCard key={index} product={product} />
         ))}
       </div>
-      <button
+      <Button
         onClick={() => router.push("/all-products")}
-        className="px-12 py-2.5 border rounded text-gray-500/70 hover:bg-slate-50/90 transition"
+        className="px-12 py-2.5 border rounded bg-blue-600 text-white hover:bg-blue-500 transition"
       >
         See more
-      </button>
+      </Button>
     </div>
   );
 };

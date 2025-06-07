@@ -5,6 +5,10 @@ import { Button } from "@/components/ui/button"
 import { Badge } from "@/components/ui/badge"
 import { Card, CardContent } from "@/components/ui/card"
 import { cn } from "@/lib/utils"
+import Bose from "/public/assets/bose_headphone_image.png"
+import Playstation from "/public/assets/playstation_image.png"
+import Macbook from "/public/assets/macbook_image.png"
+import Image from "next/image"
 
 const HeaderSlider = () => {
   const sliderData = [
@@ -16,7 +20,7 @@ const HeaderSlider = () => {
       buttonText1: "Shop Now",
       buttonText2: "View Collection",
       bgGradient: "from-blue-900 via-blue-800 to-blue-700",
-      image: "/placeholder.svg?height=400&width=400",
+      image: Bose,
       features: ["Noise Cancellation", "30hr Battery", "Premium Sound"],
     },
     {
@@ -27,7 +31,7 @@ const HeaderSlider = () => {
       buttonText1: "Pre-order",
       buttonText2: "Learn More",
       bgGradient: "from-slate-900 via-slate-800 to-blue-900",
-      image: "/placeholder.svg?height=400&width=400",
+      image: Playstation,
       features: ["4K Gaming", "Ray Tracing", "SSD Storage"],
     },
     {
@@ -38,7 +42,7 @@ const HeaderSlider = () => {
       buttonText1: "Buy Now",
       buttonText2: "Compare Models",
       bgGradient: "from-blue-800 via-blue-700 to-blue-600",
-      image: "/placeholder.svg?height=400&width=400",
+      image: Macbook,
       features: ["M3 Chip", "18hr Battery", "Retina Display"],
     },
   ]
@@ -58,72 +62,6 @@ const HeaderSlider = () => {
     }, 5000)
     return () => clearInterval(interval)
   }, [sliderData.length, mounted])
-
-  if (!mounted) {
-    return (
-      <div className="relative overflow-hidden mx-4 md:mx-6 lg:mx-8 my-8">
-        <Card className="border-0 shadow-2xl">
-          <div className="relative h-[500px] md:h-[600px] rounded-xl overflow-hidden bg-gradient-to-br from-blue-900 via-blue-800 to-blue-700">
-            <CardContent className="h-full p-0">
-              <div className="grid grid-cols-1 lg:grid-cols-2 h-full">
-                <div className="flex flex-col justify-center p-8 md:p-12 lg:p-16 text-white relative">
-                  <div className="absolute top-8 left-8">
-                    <Badge className="bg-white/20 text-white border-white/30 backdrop-blur-sm">
-                      <Zap className="w-3 h-3 mr-1" />
-                      Limited Time 30% Off
-                    </Badge>
-                  </div>
-                  <div className="space-y-6 mt-8">
-                    <h1 className="text-4xl md:text-6xl font-bold tracking-tight leading-tight">
-                      Premium Audio Experience
-                    </h1>
-                    <p className="text-lg md:text-xl opacity-90 max-w-lg leading-relaxed">
-                      Immerse yourself in crystal-clear sound with our premium headphones collection
-                    </p>
-                    <div className="flex flex-wrap gap-3">
-                      {["Noise Cancellation", "30hr Battery", "Premium Sound"].map((feature, idx) => (
-                        <Badge
-                          key={idx}
-                          variant="outline"
-                          className="bg-white/10 text-white border-white/30 backdrop-blur-sm"
-                        >
-                          <Star className="w-3 h-3 mr-1" />
-                          {feature}
-                        </Badge>
-                      ))}
-                    </div>
-                    <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                      <Button size="lg" className="bg-white text-blue-900 hover:bg-white/90 font-semibold shadow-lg">
-                        Shop Now
-                      </Button>
-                      <Button
-                        variant="outline"
-                        size="lg"
-                        className="border-white text-white hover:bg-white/10 backdrop-blur-sm"
-                      >
-                        View Collection
-                        <ArrowRight className="ml-2 h-4 w-4" />
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-                <div className="hidden lg:flex items-center justify-center p-8 relative">
-                  <div className="relative">
-                    <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl"></div>
-                    <img
-                      src="/placeholder.svg?height=400&width=400"
-                      alt="Premium Audio Experience"
-                      className="relative max-h-[400px] object-contain drop-shadow-2xl"
-                    />
-                  </div>
-                </div>
-              </div>
-            </CardContent>
-          </div>
-        </Card>
-      </div>
-    )
-  }
 
   const handlePrevSlide = () => {
     setCurrentSlide((prev) => (prev === 0 ? sliderData.length - 1 : prev - 1))
@@ -173,28 +111,18 @@ const HeaderSlider = () => {
                         ))}
                       </div>
 
-                      <div className="flex flex-col sm:flex-row gap-4 pt-4">
-                        <Button size="lg" className="bg-white text-blue-900 hover:bg-white/90 font-semibold shadow-lg">
-                          {slide.buttonText1}
-                        </Button>
-                        <Button
-                          variant="outline"
-                          size="lg"
-                          className="bg-white text-blue-900 hover:bg-white/90 font-semibold shadow-lg"
-                        >
-                          {slide.buttonText2}
-                          <ArrowRight className="ml-2 h-4 w-4" />
-                        </Button>
-                      </div>
+                      
                     </div>
                   </div>
 
                   <div className="hidden lg:flex items-center justify-center p-8 relative">
                     <div className="relative">
                       <div className="absolute inset-0 bg-white/10 rounded-full blur-3xl"></div>
-                      <img
-                        src={slide.image || "/placeholder.svg"}
+                      <Image
+                        src={slide.image || "/placeholder.svg?height=400&width=400"}
                         alt={slide.title}
+                        width={400}
+                        height={400}
                         className="relative max-h-[400px] object-contain drop-shadow-2xl"
                       />
                     </div>
