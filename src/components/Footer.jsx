@@ -165,7 +165,7 @@ const Footer = () => {
         {/* Bottom section */}
         <div className="flex flex-col md:flex-row justify-between items-center gap-6">
           <p className="text-slate-400 text-center md:text-left">
-            © {currentYear} ShopNest. All rights reserved. Made with ❤️ for tech enthusiasts.
+            © {currentYear} ShopNest. All rights reserved. 
           </p>
         </div>
       </div>
