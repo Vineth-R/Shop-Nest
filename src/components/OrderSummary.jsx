@@ -27,18 +27,18 @@ const OrderSummary = () => {
 
     const fetchUserAddresses = async () => {
     try {
-      const token = await getToken() // await the token if it's asynchronous
+      const token = await getToken() 
       const res = await fetch("/api/user/get-address", {
         headers: {
           Authorization: `Bearer ${token}`,
         },
       })
-      const data = await res.json() // parse the JSON from the response
+      const data = await res.json()
   
       if(data.success) {
         setUserAddresses(data.addresses)
         if (data.addresses.length > 0) {
-          setSelectedAddress(data.addresses[0]) // Set the first address as default
+          setSelectedAddress(data.addresses[0])
         }
       } else {
         toast.error(data.message)
@@ -88,7 +88,7 @@ const OrderSummary = () => {
   }
 
   const applyPromoCode = () => {
-    // Handle promo code application
+   
     console.log("Applying promo code:", promoCode)
   }
 

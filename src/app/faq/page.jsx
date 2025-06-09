@@ -11,7 +11,7 @@ import { ChevronDown, Search, HelpCircle, ShoppingCart, Truck, CreditCard, Shiel
 
 const FAQ = () => {
   const [searchTerm, setSearchTerm] = useState("")
-  const [openItems, setOpenItems] = useState(new Set([0])) // First item open by default
+  const [openItems, setOpenItems] = useState(new Set([0]))
 
   const categories = [
     { id: "all", name: "All Questions", icon: HelpCircle },

@@ -133,7 +133,7 @@ export const AppContextProvider = (props) => {
     const getCartAmount = () => {
     let amount = 0;
     Object.keys(cartItem || {}).forEach(productId => {
-        // Find the product and ensure it's not null
+        
         const product = products.find(p => p && p._id === productId);
         if (product) {
             amount += (product.offerPrice || 0) * cartItem[productId];
